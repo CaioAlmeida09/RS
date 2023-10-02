@@ -11,15 +11,14 @@ import {
   doc,
 } from "firebase/firestore";
 import { useState, useEffect } from "react";
-import { LinkProps } from "react-router-dom";
 
 export function Home() {
   interface listaProps {
-    name: string;
     url: string;
     bg: string;
     text: string;
     id: string;
+    name: string;
   }
   interface SocialListaProps {
     facebook: string;
@@ -33,7 +32,7 @@ export function Home() {
     const refDoc = collection(db, "Links");
     const queryRef = query(refDoc, orderBy("created", "asc"));
     getDocs(queryRef).then((snapshot) => {
-      const lista = [] as LinkProps[];
+      const lista = [] as listaProps[];
       snapshot.forEach((doc) => {
         lista.push({
           id: doc.id,

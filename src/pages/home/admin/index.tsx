@@ -43,7 +43,7 @@ export function Admin() {
           text: doc.data().text,
         });
       });
-
+      console.log(unsub);
       setLinks(lista);
     });
 
