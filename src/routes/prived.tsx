@@ -1,13 +1,13 @@
 import { auth } from "../service/firebaseconection";
 import { onAuthStateChanged } from "firebase/auth";
 import { ReactNode, useState, useEffect } from "react";
-import { Navigate, useActionData } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 interface PrivateProps {
   children: ReactNode;
 }
 
-export function Private({ children }: PrivateProps): any {
+export function Private({ children }: PrivateProps) {
   const [loading, setLoading] = useState(true);
   const [sign, setSign] = useState(false);
 
@@ -21,6 +21,7 @@ export function Private({ children }: PrivateProps): any {
       localStorage.setItem("@reactLinks", JSON.stringify(userData));
       setLoading(false);
       setSign(true);
+      console.log(unsub);
     } else {
       setSign(false);
       setLoading(false);
